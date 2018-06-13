@@ -6,7 +6,7 @@ import download
 import webbrowser
 import os
 
-m3u_url = 'http://epicstream.tv:7000/get.php?username=UBQCRTU8K&password=HDYRGUV7FS&type=m3u_plus&output=ts'
+m3u_url = ''
 _vlc = vlc.vlc_path
 _path = os.path.dirname(os.path.abspath(__file__))
 
