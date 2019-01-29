@@ -9,6 +9,7 @@ import os
 m3u_url = ''
 _vlc = vlc.vlc_path
 _path = os.path.dirname(os.path.abspath(__file__))
+_channel = None
 
 
 def download_m3u():
@@ -24,7 +25,7 @@ def download_m3u():
                 exit(1)
 
 
-def start():
+def start(_channel):
     while True:
         s = search
         c = categories
@@ -51,14 +52,14 @@ def start():
             exit(0)
         elif _search == "c":
             c.categories()
-            start()
+            start(_channel)
         elif _search == "t":
             webbrowser.open('http://www.tvguide.co.uk/')
-            start()
+            start(_channel)
         elif _search == "":
             print("Input cannot be blank")
             input("Press enter to go back")
-            start()
+            start(_channel)
         else:
             search.search_result(_search)
             _output_length = len(s._output)
@@ -78,7 +79,7 @@ def start():
                           format('| ' + s._output[items][1], '<30'))
                 _selection = selection.ask(_output_length)
                 if _selection == 0:
-                    start()
+                    start(_channel)
                 else:
                     _selection -= 1
                     _channel = str(s._output[_selection][0])
@@ -90,4 +91,4 @@ def start():
                 start()
 
 download_m3u()
-start()
+start(_channel)
